@@ -1,6 +1,0 @@
-1 コマンドプロンプトでdjangogirlsに移動
-2 myvenv に移動
-3 Scripts\activateを実行
-4 cd ..で戻る
-5 """django公式のドキュメントに従ってやれば"""サーバーが起動する，
-いい感じになる
