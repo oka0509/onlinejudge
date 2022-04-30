@@ -21,6 +21,7 @@ def problem_detail(request, pk):
             submission.title = ml.title
             submission.result = 'wj'
             caseslist = ml.gettestcase()
+            flagac = True
             for i in range(5):
                 url1 = 'http://api.paiza.io/runners/create'
                 query = {
@@ -39,7 +40,29 @@ def problem_detail(request, pk):
                 url2 = 'http://api.paiza.io/runners/get_details'
                 response2 = requests.get(url2,json=params)
                 result =response2.json()
-                print(result['stdout'])
+                if( result['build_result'] == 'failure'):
+                    submission.result = 'CE'
+                    flagac = False
+                    break
+                elif(result['build_result'] == 'timeout'):
+                    submission.result = 'CE'
+                    flagac = False
+                    break
+                elif(result['result'] == 'failure'):
+                    submission.result = 'RE'
+                    flagac = False
+                    break
+                elif(result['result'] == 'timeout'):
+                    submission.result = 'TLE'
+                    flagac = False
+                    break              
+                elif(result['stdout'] != caseslist[i][1]+'\n'):
+                    submission.result = 'WA'
+                    flagac = False
+                    break
+            if(flagac == True):
+                submission.result = 'AC'
+            #print(submission.result)
             submission.save()
             #仮のreturn
             problems = Problem.objects.all()
