@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Problem, Submission
 from .form import SubmissionForm
 from django.utils import timezone
+from django.shortcuts import redirect
 import requests
 import json
 import time
@@ -65,8 +66,7 @@ def problem_detail(request, pk):
             #print(submission.result)
             submission.save()
             #仮のreturn
-            problems = Problem.objects.all()
-            return render(request, 'onlinejudge/problem_list.html', {'problems':problems})
+            return redirect ('problem_list')
     else:
         problem = get_object_or_404(Problem, pk=pk)
         form = SubmissionForm()
