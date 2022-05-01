@@ -1,33 +1,30 @@
-<html>
-    <head>
-        <title>onlinejudge</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">onlinejudge problems</a></h1>
-        </div>
-       <h2>{{ problem.title }}</h2> 
-       <p>{{ problem.time_limits }}sec</p>
-       <p>{{ problem.memory_limits }}MB</p>
-       <p>{{ problem.text }}</p>
-       <p>constraints</p>
-       <p>{{ problem.constraints }}</p>
-       <p>input/outputformat</p>
-       <p>{{ problem.inputformat }}</p>
-       <p>{{ problem.outputformat }}</p>
-       <p>example1</p>
-       <p>{{ problem.sampleinput1 }}</p>
-       <p>{{ problem.sampleoutput1 }}</p>
-       <p>example2</p>
-       <p>{{ problem.sampleinput2 }}</p>
-       <p>{{ problem.sampleoutput2 }}</p>
-       <p>example3</p>
-       <p>{{ problem.sampleinput3 }}</p>
-       <p>{{ problem.sampleoutput3 }}</p>
-       <p>submit</p>
-       <form method="POST" class="submission-form">{% csrf_token %}
+{% extends 'onlinejudge/base.html' %}
+
+{% block content %}
+    <div class="problem-detail">
+        <h2>{{ problem.title }}</h2> 
+        <p>実行制限時間:{{ problem.time_limits }}sec</p>
+        <p>メモリ制限:{{ problem.memory_limits }}MB</p>
+        <p>問題文</p>
+        <p>{{ problem.text }}</p>
+        <p>制約</p>
+        <p>{{ problem.constraints }}</p>
+        <p>入出力形式</p>
+        <p>{{ problem.inputformat }}</p>
+        <p>{{ problem.outputformat }}</p>
+        <p>例1</p>
+        <p>{{ problem.sampleinput1 }}</p>
+        <p>{{ problem.sampleoutput1 }}</p>
+        <p>例2</p>
+        <p>{{ problem.sampleinput2 }}</p>
+        <p>{{ problem.sampleoutput2 }}</p>
+        <p>例3</p>
+        <p>{{ problem.sampleinput3 }}</p>
+        <p>{{ problem.sampleoutput3 }}</p>
+        <p>提出</p>
+        <form method="POST" class="submission-form">{% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="save btn btn-default">Submit</button>
         </form>
-    </body>
-</html>
+    </div>
+{% endblock %}

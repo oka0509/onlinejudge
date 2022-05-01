@@ -65,9 +65,12 @@ def problem_detail(request, pk):
                 submission.result = 'AC'
             #print(submission.result)
             submission.save()
-            #仮のreturn
-            return redirect ('problem_list')
+            return redirect ('submission_list')
     else:
         problem = get_object_or_404(Problem, pk=pk)
         form = SubmissionForm()
     return render(request, 'onlinejudge/problem_detail.html', {'problem': problem, 'form' : form})
+
+def submission_list(request):
+    submissions = Submission.objects.order_by('-submitteddate')
+    return render(request,'onlinejudge/submission_list.html', {'submissions':submissions})

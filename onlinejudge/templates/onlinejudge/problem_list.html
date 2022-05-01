@@ -1,16 +1,12 @@
-<html>
-    <head>
-        <title>onlinejudge</title>
-    </head>
-    <body>
+{% extends 'onlinejudge/base.html' %}
+ 
+{% block content %}
+    {% for problem in problems %}
         <div>
-            <h1><a href="/">onlinejudge problems</a></h1>
+            <h2><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h2>
+            <p>{{ problem.author }}</p>
         </div>
-        {% for problem in problems %}
-            <div>
-                <h2><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h2>
-                <p>{{ problem.author }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
+
+

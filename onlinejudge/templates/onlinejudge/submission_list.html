@@ -1,0 +1,14 @@
+{% extends 'onlinejudge/base.html' %}
+ 
+{% block content %}
+    {% for submission in submissions %}
+        <div>
+            <h2>{{ submission.title }}</h2>
+            <p>{{ submission.language }}</p>
+            <p>{{ submission.submitteddate }}</p>
+            <p>{{ submission.result }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+

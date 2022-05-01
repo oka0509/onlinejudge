@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/onlinejudge.css' %}">
+        <title>OnlineJudge</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <ul>
+                <li><a href="/">OnlineJudge</a></li>
+                <li><a href="{% url 'submission_list' %}">Submitted</a></li>
+            </ul>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
