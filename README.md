@@ -1,2 +1,2 @@
 # onlinejudge
-paizaio APIを利用したオンラインジャッジです。
+paizaio APIを使用したジャッジサイトです。
